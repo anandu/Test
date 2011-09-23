@@ -3,24 +3,28 @@
 var0=unset
 var1=unset
 var2=0
+# Getting the values from users
 echo "enter value to reach"
 read var0
 echo "Input variable #1 (end to exit) "
 read var1
+countr () {
+var2=`expr $var2 + 1` # Adding 1 to counter variable var2
+}
+# Starting the logic
 while
-     [ "$var1" != "$var0" ] # Keeps track of what $var1 was previously.
-      # Four conditions on "while", but only last one controls loop.
-      # The *last* exit status is the one that counts.
+     [ "$var1" != "$var0" ] # Checks if var1 is reached at var0 value.
 do
- var2=`expr $var2 + 1`
- var1=`expr $var1 + $var2`
+ countr
+ var1=`expr $var1 + $var2` # Adding counter to variable var1 value
  echo "variable #1 increasing to $var1"
 if [ "$var1" != "$var0" ]
 then
- var2=`expr $var2 + 1`
+ countr
  var1=`expr $var1 - $var2`
-fi
   echo "variable #1 decreasing to $var1"
+fi
 done
+# As one the loop exits
 echo
 echo "Reached at specified value $var1"
