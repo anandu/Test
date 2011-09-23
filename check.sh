@@ -4,7 +4,7 @@ var0=unset
 var1=unset
 var2=0
 # Getting the values from users
-echo "enter value to reach"
+echo "Enter value to reach"
 read var0
 echo "Input variable #1 (end to exit) "
 read var1
