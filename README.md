@@ -21,7 +21,7 @@ These are the settings used in recipes and templates. Default values are noted.
   Server.
 * `node[:chef_server][:backup][:primary][:cron][:hour]`-
   Defines the hour of the day when the primary backup will be taken of the Chef
-  Server. Backups by default occur every hour, using '*' to designate every hour
+  Server. Backups by default occur every hour, using * to designate every hour
   . Otherwise, the time of the backup is defined by 'Primary Backup Cron Hour'
   and 'Primary Backup Cron Minute'. However, if you specify a value in this
   input (e.g., 23 for 11:00 PM), then backups will occur once per day at the
