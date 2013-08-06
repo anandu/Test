@@ -21,7 +21,7 @@ These are the settings used in recipes and templates. Default values are noted.
   Server.
 * `node[:chef_server][:backup][:primary][:cron][:hour]`-
   Defines the hour of the day when the primary backup will be taken of the Chef
-  Server. Backups by default occur every hour, using * to designate every hour
+  Server. Backups by default occur every hour, using '*' to designate every hour
   . Otherwise, the time of the backup is defined by 'Primary Backup Cron Hour'
   and 'Primary Backup Cron Minute'. However, if you specify a value in this
   input (e.g., 23 for 11:00 PM), then backups will occur once per day at the
@@ -32,3 +32,30 @@ These are the settings used in recipes and templates. Default values are noted.
   will be randomly chosen at launch time. Otherwise, the time of the backup is
   defined by 'Primary Backup Cron Hour' and 'Primary Backup Cron Minute'. Uses
   standard crontab format.
+### Usage Example:
+
+## Update cookbook
+* `do_update_code`
+  Update cookbooks from remote repo and uploads to the Chef Server.
+
+## The Chef Server connection allow/deny
+* `do_chef_client_allow`-
+  Allow the Chef Server connection by opening firewall port to the Chef Client.
+
+* `do_chef_client_deny`-
+  Deny the Chef Server connection by closing firewall port to the Chef Client.
+
+### Backup the Chef Server
+1. You can skip this step if the Chef Server data is already restored (refer
+    restore section below).
+   Once your server is operational, run: `block_device::setup_block_device`
+   recipe, which initializes a block device that supports backup operations.
+
+2. Backup your Chef Server data using: `chef_server::do_primary_backup` recipe,
+   so that you can restore the Chef backup in the event of a failure or planned
+   termination.
+
+### Restore the Chef Server
+1. Once your server is operational, run: `chef_server::do_primary_restore`
+   recipe, which restores your Chef Server data from a backup previously saved
+   to cloud storage.
