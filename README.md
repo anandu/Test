@@ -32,6 +32,7 @@ These are the settings used in recipes and templates. Default values are noted.
   will be randomly chosen at launch time. Otherwise, the time of the backup is
   defined by 'Primary Backup Cron Hour' and 'Primary Backup Cron Minute'. Uses
   standard crontab format.
+
 ### Usage Example:
 
 ## Update cookbook
@@ -45,7 +46,7 @@ These are the settings used in recipes and templates. Default values are noted.
 * `do_chef_client_deny`-
   Deny the Chef Server connection by closing firewall port to the Chef Client.
 
-### Backup the Chef Server
+## Backup the Chef Server
 1. You can skip this step if the Chef Server data is already restored (refer
     restore section below).
    Once your server is operational, run: `block_device::setup_block_device`
@@ -55,7 +56,7 @@ These are the settings used in recipes and templates. Default values are noted.
    so that you can restore the Chef backup in the event of a failure or planned
    termination.
 
-### Restore the Chef Server
+## Restore the Chef Server
 1. Once your server is operational, run: `chef_server::do_primary_restore`
    recipe, which restores your Chef Server data from a backup previously saved
    to cloud storage.
