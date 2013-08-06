@@ -1,3 +1,11 @@
+## DETAILS:
+
+### General
+
+The cookbook installs the Chef Server with needed configuration for CentOS and
+Ubuntu.
+
+
 ### Attributes:
 
 These are the settings used in recipes and templates. Default values are noted.
